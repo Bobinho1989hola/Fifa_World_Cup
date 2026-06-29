@@ -7,7 +7,7 @@ import pandas as pd
 df = pd.read_csv('players-selected-columns.csv')
 df.head()
 
-### Cleaning the data, so the age column is converted from years and days, to a decimal number
+#### Cleaning the data, so the age column is converted from years and days, to a decimal number
 
 def parse_age(age_str):
     if pd.isna(age_str):
@@ -18,40 +18,40 @@ def parse_age(age_str):
 df['age'] = df['age'].apply(parse_age)
 df[['age']].head()
 
-### Using python to convert null values for the no club column
+#### Using python to convert null values for the no club column
 
 df['club'] = df['club'].fillna('No Club')
 df['club'] = df['club'].replace('', 'No Club')
 df['club'].value_counts().head()
 
-### Using python to drop a duplicate column
+#### Using python to drop a duplicate column
 
 df = df.drop(columns=['team_country'])
 df.columns
 
-### Generating a new cleaned CSV file in anticpation of being used with Power Bi
+#### Generating a new cleaned CSV file in anticpation of being used with Power Bi
 
 df.to_csv('players_cleaned.csv', index=False)
 df = pd.read_csv('players_cleaned.csv')
 df.head()
 
-### Using python to sort countries by  age
+#### Using python to sort countries by  age
 
 df.groupby('team')['age'].mean().sort_values(ascending=False)
 
-### Python to found out how many unique clubs are represented at the Fifa World Cup
+#### Python to found out how many unique clubs are represented at the Fifa World Cup
 
 df['club'].nunique()
 
-### Ascertaining the average age and standard deviations
+#### Ascertaining the average age and standard deviations
 
 df.groupby('team')['age'].agg(['mean', 'std']).sort_values('mean', ascending=False)
 
-### Using python to identify the top 15 most represented 'clubs' at the Fifa World Cup
+#### Using python to identify the top 15 most represented 'clubs' at the Fifa World Cup
 
 df['club'].value_counts().head(15)
 
-### Then did some further SQl queries to do some initial analysis on the data set
+#### Then did some further SQl queries to do some initial analysis on the data set
 
 #### Create the database to query from
 import sqlite3
