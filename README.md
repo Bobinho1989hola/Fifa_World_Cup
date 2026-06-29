@@ -65,4 +65,4 @@ Main KPIs
 
 #### PowerBI-Fifa World Cup
 
-![Finance_Analysis](Images/Finance_Analysis.png)
+![FIFA_WORLD_CUP](Images/world Cup dashboard.png)
